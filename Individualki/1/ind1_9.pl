@@ -78,3 +78,9 @@ wife(X):-man(X), parent(X,Z), parent(Y,Z), woman(Y), write(Y), !.
 
 b_s(X,Y):-not(X=Y), parent(Z,Y), parent(Z,X), !.
 b_s(X):-parent(Z,X), parent(Z,Y), man(Z), not(X=Y), write(Y), write(", "), fail.
+
+grand_pa(X,Y):-man(X), parent(X,Z), parent(Z,Y).
+grand_pas(X):-parent(Y,X), parent(Z,Y), man(Z), write(Z), write(", "), fail.
+
+grand_ma(X,Y):-woman(X), parent(X,Z), parent(Z,Y).
+grand_mas(X):-parent(Y,X), parent(Z,Y), woman(Z), write(Z), write(", "), fail.

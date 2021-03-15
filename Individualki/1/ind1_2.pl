@@ -7,6 +7,7 @@ man(arseny).
 man(dmitry).
 man(jack).
 man(andrey).
+man(semen).
 
 woman(ksenia).
 woman(daria).
@@ -17,6 +18,7 @@ woman(polina).
 woman(victoria).
 woman(elisaveta).
 woman(kristina).
+woman(angela).
 
 parent(maxim,kirill).
 parent(maxim,maria).
@@ -48,6 +50,15 @@ parent(nukolas,andrey).
 parent(alina,kristina).
 parent(alina,andrey).
 
+parent(semen, daria).
+parent(semen, jasmin).
+parent(semen, nikolas).
+parent(semen, sergey).
+
+parent(angela, daria).
+parent(angela, jasmin).
+parent(angela, nikolas).
+parent(angela, sergey).
 men(X):-man(X), write(X), write(", "), fail.
 women(X):-woman(X), write(X), write(", "), fail.
 
