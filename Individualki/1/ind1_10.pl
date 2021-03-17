@@ -2,7 +2,7 @@ man(maxim).
 man(kirill).
 man(sergey).
 man(ivan).
-man(nukolas).
+man(nikolas).
 man(arseny).
 man(dmitry).
 man(jack).
@@ -45,8 +45,8 @@ parent(ivan,elisaveta).
 parent(jasmin,victoria).
 parent(jasmin,elisaveta).
 
-parent(nukolas,kristina).
-parent(nukolas,andrey).
+parent(nikolas,kristina).
+parent(nikolas,andrey).
 parent(alina,kristina).
 parent(alina,andrey).
 
@@ -66,6 +66,7 @@ women(X):-woman(X), write(X), write(", "), fail.
 children(X):-parent(X,Y), write(Y), write(", "), fail.
 
 mother(X,Y):-woman(X),parent(X,Y).
+mother(X):-parent(Y,X), woman(Y), write(Y), fail.
 
 daughter(X,Y):-parent(Y,X), woman(X).
 daughter(X):-parent(X,Y), woman(Y), write(Y), write(", "), fail.
@@ -86,5 +87,3 @@ grand_ma(X,Y):-woman(X), parent(X,Z), parent(Z,Y).
 grand_mas(X):-parent(Y,X), parent(Z,Y), woman(Z), write(Z), write(", "), fail.
 
 grand_pa_and_son(X,Y):-man(X), man(Y), (grand_pa(X,Y); grand_pa(Y,X)).
-
-

@@ -7,6 +7,7 @@ man(arseny).
 man(dmitry).
 man(jack).
 man(andrey).
+man(semen).
 
 woman(ksenia).
 woman(daria).
@@ -17,6 +18,7 @@ woman(polina).
 woman(victoria).
 woman(elisaveta).
 woman(kristina).
+woman(angela).
 
 parent(maxim,kirill).
 parent(maxim,maria).
@@ -48,6 +50,16 @@ parent(nikolas,andrey).
 parent(alina,kristina).
 parent(alina,andrey).
 
+parent(semen, daria).
+parent(semen, jasmin).
+parent(semen, nikolas).
+parent(semen, sergey).
+
+parent(angela, daria).
+parent(angela, jasmin).
+parent(angela, nikolas).
+parent(angela, sergey).
+
 men(X):-man(X), write(X), write(", "), fail.
 women(X):-woman(X), write(X), write(", "), fail.
 
@@ -63,7 +75,20 @@ brother(X,Y):- not(X=Y), parent(Z,X), parent(Z,Y), man(X).
 brothers(X):-parent(Y,X), parent(Y,Z), not(X=Z), man(Z), man(Y), write(Z), write(", "), fail.
 
 wife(X,Y):-woman(X), man(Y), parent(X,Z), parent(Y,Z).
-wife(X):-man(X), parent(X,Z), parent(Y,Z), woman(Y), write(Y),!.
+wife(X):-man(X), parent(X,Z), parent(Y,Z), woman(Y), write(Y), !.
 
 b_s(X,Y):-not(X=Y), parent(Z,Y), parent(Z,X), !.
 b_s(X):-parent(Z,X), parent(Z,Y), man(Z), not(X=Y), write(Y), write(", "), fail.
+
+grand_pa(X,Y):-man(X), parent(X,Z), parent(Z,Y).
+grand_pas(X):-parent(Y,X), parent(Z,Y), man(Z), write(Z), write(", "), fail.
+
+grand_ma(X,Y):-woman(X), parent(X,Z), parent(Z,Y).
+grand_mas(X):-parent(Y,X), parent(Z,Y), woman(Z), write(Z), write(", "), fail.
+
+grand_pa_and_son(X,Y):-man(X), man(Y), (grand_pa(X,Y); grand_pa(Y,X)).
+
+grand_ma_and_da(X,Y):-grand_ma(X,Y); grand_ma(X,Y).
+
+uncle(X,Y):-man(X), parent(Z,X), parent(Z,X1), parent(X1,Y), not(X=X1).
+all_uncles(X):-parent(Y,X), parent(Z,Y), parent(Z,Y1), man(Z), not(Y=Y1), man(Y1), write(Y1), write(", "), fail.
