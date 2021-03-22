@@ -21,4 +21,4 @@ fib_down(N,X,X1,X2):-N1 is N-1, X3 is X1+X2, fib_down(N1,X,X2,X3).
 fib_down(N,X):-fib_down(N,X,1,1).
 
 sum_dig(N,N):-N>=0, N<10, !.
-sum_dig(N,X):-V is N div 10, P is N mod 10, sum_dig(V,X1), K is P+X1.
+sum_dig(N,X):-V is N div 10, P is N mod 10, sum_dig(V,X1), X is P+X1.
