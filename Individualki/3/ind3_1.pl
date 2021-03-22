@@ -1,2 +1,2 @@
 max(X,Y,X):-X>Y, !.
-max(_,Y,Y):-.
+max(_,Y,Y).
