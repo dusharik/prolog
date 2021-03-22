@@ -45,3 +45,9 @@ mult_no_5_down(N,X):-mult_no_5_down(N,X,1).
 nod(X1,X2,N,N1):-0 is X1 mod N1, 0 is X2 mod N1, N is N1.
 nod(X1,X2,N,N1):-N2 is N1-1, nod(X1,X2,N,N2).
 nod(X1,X2,N):-((X1 > X2, N1 is X2); N1 is X1), nod(X1,X2,N,N1), !.
+
+simple(X,N):-(N = 1, write("Prime number")); ((0 is X mod N, write("Number is not prime"), !); N1 is N-1, simple(X,N1)), !.
+simple(X):-N is X-1, simple(X,N).
+
+num_of_divisors(X,Cur,N):-(0 is Cur, write("number of divisors - "), write(N)); ((0 is X mod Cur, N1 is N+1); N1 is N), Cur1 is Cur-1, num_of_divisors(X,Cur1,N1), !.
+num_of_divisors(X):-Cur is X, num_of_divisors(X,Cur,0), !.
