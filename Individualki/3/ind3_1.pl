@@ -1,2 +1,2 @@
-max(X,Y,Z):-X>Y,Z is X, !.
-max(X,Y,Z):-Z is Y.
+max(X,Y,X):-X>Y, !.
+max(_,Y,Y):-.
