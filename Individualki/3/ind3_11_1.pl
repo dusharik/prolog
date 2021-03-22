@@ -34,6 +34,6 @@ min_dig_down(N,X,M1,M2):-N<10, N>=0, ((N < M1, X is N); X is M1).
 min_dig_down(N,X,M1,M2):-N1 is N div 10, M3 is N mod 10, ((M1 < M3, M2 is M1); M2 is M3), min_dig_down(N1,X,M2,M4), !.
 min_dig_down(N,X):-M1 is N mod 10, min_dig_down(N,X,M1,M2).
 
-mult_no_5_up(N,X,M):-N<10, N>=0, not(N mod 5 = 0), X is N.
+mult_no_5_up(N,X,M):-N<10, N>=0, N1 is N mod 5, not(N1 = 0), X is N.
 mult_no_5_up(N,X,M):-N1 is N div 10, Cur is N mod 10, Cur1 is Cur mod 5, ((not(Cur1 = 0), M is Cur); M is 1), mult_no_5_up(N1,X1,M1), X is M * X1, !.
 mult_no_5_up(N,X):-mult_no_5_up(N,X,M).
