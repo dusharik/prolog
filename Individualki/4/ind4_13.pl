@@ -64,7 +64,7 @@ del_el([_|T],0,T):-!.
 del_el([H|T],N,[H|T1]):-N1 is N-1,del_el(T,N1,T1).
 
 %13
-del_els(List,X):-del_els(List,X,List_New,[]).
+del_els(List,X,List_New):-del_els(List,X,List_New,[]).
 del_els([],_,List_New,List_New):-!.
 del_els([H|T],X,List_New,List_Cur):-X=:=H, del_els(T,X,List_New,List_Cur), !.
 del_els([H|T],X,List_New,List_Cur):-not(X=H), append(List_Cur,[H],List_Cur1), del_els(T,X,List_New,List_Cur1).
